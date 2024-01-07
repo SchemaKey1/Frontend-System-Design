@@ -19,7 +19,7 @@ module.exports = {
     compress: true,
     hot: true,
     liveReload: true,
-    port: 3000,
+    port: 3002,
   },
   module: {
     rules: [
@@ -40,14 +40,19 @@ module.exports = {
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "timer",
+      name: "app2",
       filename: "remoteEntry.js",
       exposes: {
-        "./Timer": path.resolve(__dirname, "src", "App.jsx"),
+        "./Nav": path.resolve(__dirname, "src", "components", "Nav.jsx"),
+        "./Footer": path.resolve(__dirname, "src", "components", "Footer.jsx"),
       },
       shared: {
         react: { singleton: true },

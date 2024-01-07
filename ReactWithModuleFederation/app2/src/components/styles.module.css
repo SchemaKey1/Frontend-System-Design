@@ -1,0 +1,14 @@
+.nav {
+  width: 100vw;
+  height: 60px;
+  background-color: yellow;
+  text-align: center;
+}
+
+.footer {
+  width: 100vw;
+  height: 60px;
+  background-color: black;
+  color: white;
+  text-align: center;
+}

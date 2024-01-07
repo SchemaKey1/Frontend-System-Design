@@ -19,7 +19,7 @@ module.exports = {
     compress: true,
     hot: true,
     liveReload: true,
-    port: 3000,
+    port: 3001,
   },
   module: {
     rules: [
@@ -44,10 +44,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "timer",
-      filename: "remoteEntry.js",
-      exposes: {
-        "./Timer": path.resolve(__dirname, "src", "App.jsx"),
+      name: "app1",
+      remotes: {
+        app2: "app2@http://localhost:3002/remoteEntry.js",
+        timer: "timer@http://localhost:3000/remoteEntry.js",
       },
       shared: {
         react: { singleton: true },
